@@ -1,7 +1,8 @@
 ##this file will contain the class Node for each county
 
 class Node:
-    def __init__(self, code):
+    def __init__(self, code: int, name: str):
+        self.name = name
         self.code = code
         self.degree = 0
         self.color = None
@@ -28,3 +29,5 @@ class Node:
         Assign a color to the node
         """
         self.color = color
+    def get_name(self):
+        return self.name

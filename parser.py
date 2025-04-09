@@ -1,4 +1,6 @@
 ## this file is used to make the complete adjcaceny matrix
+from node import Node
+
 def read_file(file_name: str) -> list[list]:
     """
     Read a file and return a list of lists of strings
@@ -15,23 +17,21 @@ def make_list(data) -> dict:
     """
     data is a list of lists of strings of the form: A|code|B|code
     """
-    adj = {}
+    nodes = {}
 
     for entry in data:
-        code1 = int(entry[1])
-        code2 = int(entry[3])
+        name1, code1 = entry[0], int(entry[1])
+        name2, code2 = entry[2], int(entry[3])
 
-        if code1 not in adj:
-            adj[code1] = []
-        if code2 not in adj:
-            adj[code2] = []
+        # Create Node objects if they don't exist
+        if code1 not in nodes:
+            nodes[code1] = Node(code=code1, name=name1)
+        if code2 not in nodes:
+            nodes[code2] = Node(code=code2, name=name2)
 
-        if code2 not in adj[code1] and code1 != code2:
-            adj[code1].append(code2)
-        if code1 not in adj[code2] and code1 != code2:
-            adj[code2].append(code1)
-    return adj
+        # Add each other as neighbors (skip self-loops)
+        if code1 != code2:
+            nodes[code1].add_neighbor(nodes[code2])
+            nodes[code2].add_neighbor(nodes[code1])
 
-
-line = read_file("raw_list.txt")
-print(make_list(line))
+    return list(nodes.values())
