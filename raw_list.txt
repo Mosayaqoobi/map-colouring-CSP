@@ -22193,5 +22193,5 @@ Midway Islands, UM|74300|Midway Islands, UM|74300
 St. Croix Island, VI|78010|St. Croix Island, VI|78010
 St. John Island, VI|78020|St. John Island, VI|78020
 St. John Island, VI|78020|St. Thomas Island, VI|78030
-St. Thomas Island, VI|78030|St. John Island, VI|78020
+St. Thomas Island, VI|78030|St. John Island, VI|78020 
 St. Thomas Island, VI|78030|St. Thomas Island, VI|78030
